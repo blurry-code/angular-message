@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="de" ng-App="APP">
+    <head>
+        <meta charset="UTF-8">
+        <title>angular-message</title>
+        
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+    <!-- uncomment if jquery is needed for application, also remove 'bootstrap-without-jquery' -->
+    <!--
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+    -->
+        <script src="../bower_components/bootstrap-without-jquery/bootstrap3/bootstrap-without-jquery.min.js"></script>
+    </head>
+    <body>
+        
+        <message data-title="Error" data-text="Fatal test error: While testing a fatal test error has occurred." data-class="danger" cancel="Format device now!"></message>
+        
+        
+        <script src="../bower_components/angular/angular.js"></script>
+        <script src="../angular-message.js"></script>
+        
+        <script>
+            var APP = angular.module('APP',['angular-message']);
+        </script>
+    </body>
+</html>

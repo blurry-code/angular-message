@@ -1,0 +1,81 @@
+ <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="0">
+  <filter id="B">
+  	<feGaussianBlur stdDeviation="0.3" />
+  </filter>
+</svg>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="0">
+  <filter id="A">
+    <feGaussianBlur stdDeviation="3" />
+  </filter>
+</svg>
+
+<div class="messageWrapper" ng-show="mShow">   
+    <div class="messageBG">
+        <div class="panel" ng-class="{'panel-{{class}}' : class, 'panel-default' : !class}">
+            <div ng-show="title" class="panel-heading">{{title}}</div>
+            <div class="panel-body">
+                {{text}}
+            </div>
+            <div class="panel-footer" ng-show="cancel"><button type="button" class="btn" ng-class="{'btn-{{class}}' : class, 'btn-default' : !class}" ng-click="close()">{{cancel}}</button></div>
+        </div>
+    </div>
+</div>
+<style ng-if="blurNow">
+    .blurContent {
+        /* firefox uses SVG filters */
+        filter: url(#A);
+        /* IE specific */
+        filter: progid:DXImageTransform.Microsoft.Blur(pixelradius=10); 
+
+        -webkit-filter: blur(2px);
+        -moz-filter: blur(2px);
+        -ms-filter: blur(2px);
+        -o-filter: blur(2px);
+        filter: blur(2px);
+
+        color: #000;
+    }
+    .messageWrapper, .messageBG {
+        filter: url(#B);
+        /* IE specific */
+        filter: progid:DXImageTransform.Microsoft.Blur(pixelradius=10); 
+
+        -webkit-filter: blur(0px) !important;
+        -moz-filter: blur(0px) !important;
+        -ms-filter: blur(0px) !important;
+        -o-filter: blur(0px) !important;
+        filter: blur(0px) !important;
+
+        color: #000;
+        z-index: 9999;
+    }
+</style>
+
+<style>
+    .blur, .messageWrapper {
+        position:absolute;
+        top:0;
+        left:0;
+        width:100vw;
+        height:100vh;
+    }
+    .messageWrapper {
+        display:flex;
+        align-items: center;
+    }
+    .messageBG {
+        margin:0 auto;
+      /*  width:200px; */
+        height:100px;
+    }
+</style>
+
+
+<!-- info -->
+<!--
+class: possible values:
+- primary
+- success
+- info
+- warning
+- danger
