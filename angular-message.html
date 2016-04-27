@@ -1,4 +1,4 @@
- <svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="0">
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" height="0">
   <filter id="B">
   	<feGaussianBlur stdDeviation="0.3" />
   </filter>
@@ -10,18 +10,18 @@
 </svg>
 
 <div class="messageWrapper" ng-show="mShow">   
-    <div class="messageBG">
-        <div class="panel" ng-class="{'panel-{{class}}' : class, 'panel-default' : !class}">
-            <div ng-show="title" class="panel-heading">{{title}}</div>
+    <div class="messageBG" ng-init="myMessage">
+        <div class="panel panel-default panel-{{myMessage.class}}">
+            <div ng-show="myMessage.title" class="panel-heading">{{myMessage.title}}</div>
             <div class="panel-body">
-                {{text}}
+                {{myMessage.text}}
             </div>
-            <div class="panel-footer" ng-show="cancel"><button type="button" class="btn" ng-class="{'btn-{{class}}' : class, 'btn-default' : !class}" ng-click="close()">{{cancel}}</button></div>
+            <div class="panel-footer" ng-show="myMessage.cancel"><button type="button" class="btn btn-{{myMessage.class}}" ng-class="{'btn-{{myMessage.class}}' : myMessage.class, 'btn-default' : !myMessage.class}" ng-click="close()">{{myMessage.cancel}}</button></div>
         </div>
     </div>
 </div>
 <style ng-if="blurNow">
-    .blurContent {
+    .{{myMessage.blur}} {
         /* firefox uses SVG filters */
         filter: url(#A);
         /* IE specific */
@@ -52,7 +52,7 @@
 </style>
 
 <style>
-    .blur, .messageWrapper {
+    .messageWrapper {
         position:absolute;
         top:0;
         left:0;
@@ -65,7 +65,7 @@
     }
     .messageBG {
         margin:0 auto;
-      /*  width:200px; */
+        max-width:30vw; /*TODO: have this dynamic*/
         height:100px;
     }
 </style>

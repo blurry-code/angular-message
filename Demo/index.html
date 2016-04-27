@@ -12,16 +12,29 @@
     -->
         <script src="../bower_components/bootstrap-without-jquery/bootstrap3/bootstrap-without-jquery.min.js"></script>
     </head>
-    <body>
+    <body ng-controller="MainController">
         
-        <message data-title="Error" data-text="Fatal test error: While testing a fatal test error has occurred." data-class="danger" cancel="Format device now!"></message>
+        <message message="message1"></message>
         
         
         <script src="../bower_components/angular/angular.js"></script>
         <script src="../angular-message.js"></script>
         
         <script>
-            var APP = angular.module('APP',['angular-message']);
+            var APP = angular.module('APP',['angular-message'])
+            .controller('MainController',function($scope, $timeout){
+              $scope.message1 = {
+                    title:"Very serious test error!",
+                    text:"While testing a very serious test error occurred. Should this happen again please report immediatly to the system admin!",
+                    cancel:"Format device now!",
+                    blur:"blurry",
+                    class:"danger",
+                    time:"5000"
+                };
+                $timeout(function(){
+                    $scope.message1.showMe();
+                },0)
+                });
         </script>
     </body>
 </html>
